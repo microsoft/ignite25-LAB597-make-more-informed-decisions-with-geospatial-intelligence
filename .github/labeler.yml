@@ -1,0 +1,82 @@
+# Configuration for github/issue-labeler action
+# See: https://github.com/github/issue-labeler
+
+# Documentation related issues
+- label: "documentation"
+  title:
+    - "\\bdoc(s|umentation)?\\b"
+    - "\\breadme\\b"
+  body:
+    - "\\bdoc(s|umentation)?\\b"
+
+# Bug reports
+- label: "bug"
+  title:
+    - "\\bbug\\b"
+    - "\\berror\\b"
+    - "\\bissue\\b"
+    - "\\bproblem\\b"
+    - "\\bfail(ed|ure)?\\b"
+  body:
+    - "\\bbug\\b"
+    - "\\berror\\b"
+
+# Feature requests
+- label: "enhancement"
+  title:
+    - "\\bfeature\\b"
+    - "\\benhancement\\b"
+    - "\\brequest\\b"
+    - "\\bimprove(ment)?\\b"
+  body:
+    - "\\bfeature\\b"
+    - "\\benhancement\\b"
+
+# Lab related issues
+- label: "lab"
+  title:
+    - "\\blab\\b"
+    - "\\bexercise\\b"
+    - "\\bworkshop\\b"
+  body:
+    - "\\blab\\b"
+    - "\\bexercise\\b"
+
+# Questions
+- label: "question"
+  title:
+    - "\\bquestion\\b"
+    - "\\bhelp\\b"
+    - "\\bhow\\s+to\\b"
+  body:
+    - "\\bquestion\\b"
+    - "\\bhelp\\b"
+
+# Priority labels based on keywords
+- label: "priority: high"
+  title:
+    - "\\bcritical\\b"
+    - "\\burgent\\b"
+    - "\\bhigh\\s+priority\\b"
+  body:
+    - "\\bcritical\\b"
+    - "\\burgent\\b"
+
+# Ignite specific labels
+- label: "ignite"
+  title:
+    - "\\bignite\\b"
+    - "\\bmicrosoft\\s+ignite\\b"
+  body:
+    - "\\bignite\\b"
+
+# Geospatial intelligence related
+- label: "geospatial"
+  title:
+    - "\\bgeospatial\\b"
+    - "\\bgis\\b"
+    - "\\bmapping\\b"
+    - "\\blocation\\b"
+  body:
+    - "\\bgeospatial\\b"
+    - "\\bgis\\b"
