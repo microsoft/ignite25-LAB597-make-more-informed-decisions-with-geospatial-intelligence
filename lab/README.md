@@ -4,27 +4,56 @@ These instructions are for participants of the **instructor-led** Workshop "SESS
 
 ## Lab Overview
 
-In this hands-on workshop, you’ll learn to ....
+This is a notebook based exercise to show students how to use Microsoft Planetary Computer Pro and Databricks to help identify schools in a given city which are hotter than average and could use additional tree cover to help cool their property. 
 
-If you're not a workshop participant at AI Tour, try this code yourself at ....
+To do this, we will use several data sources:
+
+* GeoJSON containing list of schools along with latitude and longitude
+* Aerial Imagery (NAIP) of the schools, containing both visible and infrared data (help calculate vegitation index)
+   
+   This data will be stored in a Microsoft Planetary Computer Pro GeoCatalog
+* Landsat Surface Temperature Data from the Open Planetary ComputerSamples will be taken over many summers on cloud-free days to understand average temperature for the school. 
+
+This data will be brought together in Databricks to provide a list of schools, their temperature and tree index. This data will then be used to determine which schools need to be greened. 
+
+The exercise will be broken up in several sections-
+
+### Setup:
+
+- Verify Key Resources are PresentGeoCatalog
+- Databricks
+- Download any necessary material to local machine
+
+### Data Ingestion:
+
+- Load GeoJSON containing locations of POI (Schools)
+- Load Corresponding High Resolution Imagery of these locations into GeoCatalog
+- Ingest Data
+   - Set Render Configuration
+   - Preview Data
+
+### Data Processing:
+
+Load Indexed Values from Landsat for Surface Temperature
+Calculate NDVI for schools (Tree Index)
+
+### Analysis:
+
+- Stack Rank data based on Hottest Schools with least Tree Index
+- Prepare Report: Names of Schools + Imagery, suggestions on how many trees to add
+
 
 ## Pre-Requisites
 
-To participate in this workshop, you will need:
 
-1. Your own laptop.
-   * It need only be capable of running a browser and GitHub Codespaces, so almost any laptop will do.
-   * A recent version of Edge, Chrome or Safari is recommended.
-2. Prerequisite #2
-3. Prerequisite #3
 
 ## Get Started
 
-To get started you will need to
+
 
 ## Discussions
 
-Build your first agent with Azure AI Agent Service is an open source project supported by Microsoft. See the [SUPPORT.md](../SUPPORT.md) file for details on how to raise issues or contribute. If you enjoyed this workshop please give the repository a ⭐ and share it with others.
+
 
 ## Source code
 
