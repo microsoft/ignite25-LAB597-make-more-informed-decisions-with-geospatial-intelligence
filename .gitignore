@@ -420,3 +420,8 @@ site/
 *.msix
 *.msm
 *.msp
+lab/filter_schools_by_geometry.py
+lab/debug_landsat_assets.py
+.gitignore
+lab/remove_duplicate_schools.py
+lab/imagery/garcia_elementary_cog.tif
