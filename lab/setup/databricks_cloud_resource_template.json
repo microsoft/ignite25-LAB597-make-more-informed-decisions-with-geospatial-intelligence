@@ -1,0 +1,149 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.38.5.1644",
+      "templateHash": "7148562656757428551"
+    }
+  },
+  "parameters": {
+    "workspaceName": {
+      "type": "string",
+      "defaultValue": "Ignite25Lab597"
+    },
+    "managedResourceGroup": {
+      "type": "string",
+      "defaultValue": "Ignite25Lab597-Resources"
+    },
+    "managedIdentityName": {
+      "type": "string",
+      "defaultValue": "dbmanagedidentity"
+    },
+    "geoCatalogSubscriptionId": {
+      "type": "string",
+      "defaultValue": "37d1391e-71d7-4e07-ba62-3b5d8d4e5fbd"
+    },
+    "geoCatalogResourceGroup": {
+      "type": "string",
+      "defaultValue": "Lab597_GeoCatalog"
+    },
+    "geoCatalogName": {
+      "type": "string",
+      "defaultValue": "Lab597GeoCatalog"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "northcentralus"
+    }
+  },
+  "resources": {
+    "databricksWorkspace": {
+      "type": "Microsoft.Databricks/workspaces",
+      "apiVersion": "2025-03-01-preview",
+      "name": "[parameters('workspaceName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "premium",
+        "tier": "Premium"
+      },
+      "properties": {
+        "managedResourceGroupId": "[format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, parameters('managedResourceGroup'))]",
+        "defaultCatalog": {
+          "initialType": "UnityCatalog"
+        },
+        "parameters": {
+          "enableNoPublicIp": {
+            "value": false
+          }
+        }
+      }
+    },
+    "databricksManagedIdentity": {
+      "existing": true,
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2025-01-31-preview",
+      "resourceGroup": "[parameters('managedResourceGroup')]",
+      "name": "[parameters('managedIdentityName')]",
+      "dependsOn": [
+        "databricksWorkspace"
+      ]
+    },
+    "permissions": {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "assignPermissions",
+      "subscriptionId": "[parameters('geoCatalogSubscriptionId')]",
+      "resourceGroup": "[parameters('geoCatalogResourceGroup')]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "principalId": {
+            "value": "[reference('databricksManagedIdentity').principalId]"
+          },
+          "geoCatalogName": {
+            "value": "[parameters('geoCatalogName')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.38.5.1644",
+              "templateHash": "2388760841063374219"
+            }
+          },
+          "parameters": {
+            "principalId": {
+              "type": "string"
+            },
+            "geoCatalogName": {
+              "type": "string",
+              "defaultValue": "Lab597GeoCatalog"
+            }
+          },
+          "variables": {
+            "geoCatalogAdminRoleId": "c9c97b9c-105d-4bb5-a2a7-7d15666c2484",
+            "roleDefinitionId": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', variables('geoCatalogAdminRoleId'))]"
+          },
+          "resources": {
+            "geoCatalog": {
+              "existing": true,
+              "type": "Microsoft.Orbital/geoCatalogs",
+              "apiVersion": "2025-02-11-preview",
+              "name": "[parameters('geoCatalogName')]"
+            },
+            "geoCatalogAdminAssignment": {
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2022-04-01",
+              "scope": "[format('Microsoft.Orbital/geoCatalogs/{0}', parameters('geoCatalogName'))]",
+              "name": "[guid(resourceId('Microsoft.Orbital/geoCatalogs', parameters('geoCatalogName')), parameters('principalId'), variables('geoCatalogAdminRoleId'))]",
+              "properties": {
+                "roleDefinitionId": "[variables('roleDefinitionId')]",
+                "principalId": "[parameters('principalId')]",
+                "principalType": "ServicePrincipal"
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "databricksManagedIdentity"
+      ]
+    }
+  },
+  "outputs": {
+    "databricksWorkspaceUrl": {
+      "type": "string",
+      "value": "[reference('databricksWorkspace').workspaceUrl]"
+    }
+  }
+}
