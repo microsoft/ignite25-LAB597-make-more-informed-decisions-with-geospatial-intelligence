@@ -63,4 +63,12 @@ $libraries = @{
 } | ConvertTo-Json -Depth 10
 ./cli/databricks libraries install --json $libraries
 
+# Download the resources
+Invoke-WebRequest -Uri https://ignite25lab597.z14.web.core.windows.net/lab_resources/phoenix_schools.geojson -OutFile phoenix_schools.geojson
+Invoke-WebRequest -Uri https://ignite25lab597.z14.web.core.windows.net/lab_resources/school-greening.ipynb -OutFile school-greening.ipynb
+
+# Copy resources to Databricks workspace
+./cli/databricks workspace import /Workspace/Shared/phoenix_schools.geojson --format RAW --file ./phoenix_schools.geojson
+./cli/databricks workspace import /Workspace/Shared/school-greening.ipynb --format JUPYTER --file ./school-greening.ipynb
+
 return $true
