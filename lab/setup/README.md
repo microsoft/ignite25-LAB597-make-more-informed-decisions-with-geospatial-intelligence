@@ -233,9 +233,9 @@ The template is based on an ARM template that deploys an Azzure Databricks works
 | Delay | 0 |
 | Timeout | 10 minutes |
 | Repeat | No |
-| Retries | 0 |
+| Retries | 3 |
 | Error Action | `Notify User` |
-| Error Notification ||
+| Error Notification | `An error occurred while attempting to assign your permissions to the GeoCatalog. Please notify the lab proctors to resolve the issue.` |
 
 ```powershell
 $roles= @('GeoCatalog Administrator')
@@ -245,11 +245,11 @@ New-AzRoleAssignment -SignInName '@lab.CloudPortalCredential(User1).Username' -R
 }
 ```
 
-#### Get Databricks Workspace URL
+#### Configure Databricks
 
 | Setting | Value |
 |---------|-------|
-| Name | `Get Databricks Workspace URL` |
+| Name | `Configure Databricks` |
 | Action | `Execture Script in Cloud Platform` |
 | Event | `Post-Build` |
 | Blocking | Yes |
