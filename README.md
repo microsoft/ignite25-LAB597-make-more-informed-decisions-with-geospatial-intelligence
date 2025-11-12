@@ -63,10 +63,10 @@ For more information, setup instructions for other dev clients, and to post comm
 
 <table>
 <tr>
-    <td align="center"><a href="http://github.com/prasadkomma">
+    <td align="center"><a href="http://github.com/prasadko">
         <img src="https://github.com/prasadkomma.png" width="100px;" alt="Prasad Komma"/><br />
         <sub><b>Prasad Komma</b></sub></a><br />
-            <a href="https://github.com/prasadkomma" title="talk">📢</a> 
+            <a href="https://github.com/prasadko" title="talk">📢</a> 
     </td>
 </tr></table>
 
