@@ -70,6 +70,9 @@ For more information, setup instructions for other dev clients, and to post comm
     </td>
 </tr></table>
 
+## 🚀 Getting Started
+
+At Ignite, a virtual environment with all prerequisites and required accounts is provided for this lab. To run this lab outside of Ignite, follow the [setup instructions](./lab/README.md).
 
 ## Contributing
 
