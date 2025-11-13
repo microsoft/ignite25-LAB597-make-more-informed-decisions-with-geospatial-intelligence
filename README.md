@@ -56,7 +56,7 @@ For more information, setup instructions for other dev clients, and to post comm
 |:-------------------|:----------------------------------|:-------------------|
 | Microsoft Planetary Computer Pro Docs | [What is Microsoft Planetary Computer Pro?](https://learn.microsoft.com/en-us/azure/planetary-computer/microsoft-planetary-computer-pro-overview?ocid=ignite25_lab597_github_cnl) | Enterprise geospatial data and analytics platform |
 | Contact the Team | [MPCPro@Microsoft.com](mailto:MPCPro@Microsoft.com) | Questions about Microsoft Planetary Computer Pro? |
-| Ignite 2025 Next Steps | [https://aka.ms/Ignite25-Next-Steps](https://aka.ms/Ignite25-Next-Steps?ocid=ignite25_nextsteps_cnl) | Links to all repos for Ignite 25 Sessions |
+| Ignite 2025 Next Steps | [https://aka.ms/Ignite25-Next-Steps](https://aka.ms/Ignite25-Next-Steps?ocid=ignite25_nextsteps_cnl) | Links to all repos for Ignite 2025 Sessions |
 | Learn at Ignite | [https://aka.ms/LearnAtIgnite](https://aka.ms/LearnAtIgnite?ocid=ignite25_nextsteps_github_cnl) | Continue learning on Microsoft Learn |
 
 ## Content Owners
